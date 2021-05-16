@@ -1,142 +1,61 @@
-/*PREGUNTA 1:
-Estamos creando una aplicación de apuestas de fútbol.
-Supongamos que obtenemos datos de un servicio web sobre un determinado juego (vera un ejemplo del objeto “game” al final de este enunciado) trabajara con esos datos.
-Sus tareas: */
-const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-    ['Neuer','Pavard','Martinez','Alaba','Davies','Kimmich','Goretzka','Coman','Muller','Gnarby','Lewandowski',],
-    [
-    'Burki',
-    'Schulz',
-    'Hummels',
-    'Akanji',
-    'Hakimi',
-    'Weigl',
-    'Witsel',
-    'Hazard',
-    'Brandt',
-    'Sancho',
-    'Gotze',
-    ],
-    ],
-    score: '4:0',
-    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-    date: 'Nov 9th, 2037',
-    odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-    },
-    };
-    
-    
-    /*1. Cree una matriz de jugadores para cada equipo (variables 'jugadores1' y 'jugadores2')*/
-    
-    //----------------------------equipo1
-    let jugadores1: String[]= game.players[0];
-    console.log(jugadores1);
-    //-----------------------------equipo2
-    let jugadores2: String[]= game.players[1];
-    console.log(jugadores2);
-    
-    /*2. El primer jugador en cualquier conjunto de jugadores es el portero y los demás son jugadores de campo. 
-    Para el Bayern de Múnich (equipo 1) cree una variable ('gk') con el nombre del portero y una matriz ('fieldPlayers') con los 10 restantes jugadores de campo*/
-    
-    let gk= jugadores1[0];
-    const [n1,...restodenombres]=jugadores1;
-    let fieldPlayers: String[]=[...restodenombres];
-    console.log(fieldPlayers);
-    
-    
-    /*3. Cree una matriz 'allPlayers' que contenga a todos los jugadores de ambos equipos (22 jugadores)*/
-    //ambos  equipos
-    
-    //let allPlayers: String[]=[...jugadores1,...jugadores2]; //un metodo para la respuesta
-     let allPlayers: String[]=jugadores1.concat(jugadores2);  //segundo metodo para la respuesta  
-    console.log(allPlayers);
-    
-    /*4. Durante el partido, el Bayern de Múnich (equipo 1) utilizó 3 jugadores suplentes. Así que crea una nueva matriz 
-    ('players1Final') que contiene todos los jugadores originales del equipo1 más 'Thiago', 'Coutinho' y 'Perisic'*/
-    
-    let players1Final: String  []=[...jugadores1,'Thiago', 'Coutinho' , 'Perisic']
-    console.log(players1Final);
-    
-    /*5. Basado en el objeto game.odds, cree una variable para cada cuota (llamada 'equipo1', 'empate' y 'equipo2')*/
-    
-    let equipo1=game.odds.team1;
-    console.log(equipo1);
-    let equipo2=game.odds.team2;
-    console.log(equipo2);
-    let empate=game.odds.x;
-    console.log(empate);
-    
-    
- 
 
-    
-    
-    /*6. Escriba una función ('printGoals') que reciba un número arbitrario de nombres de jugadores (no un array) 
-    e imprime cada uno de ellos en la consola, junto con el número de goles que se marcaron en total (número de nombres de jugadores transferidos).*/
-    
-    let v =(printGoals(game.scored));
-    
-    function printGoals(...ns:any) {
-      
-       
-        let arr= [...ns[0]];
-        console.log(arr);
-        let result:any = { }; 
-            for(let i = 0; i < arr.length; ++i) 
-            { 
-                if(!result[arr[i]])
-                
-                    result[arr[i]] = 0; 
-                    ++result[arr[i]]; 
-                
-            }
-            console.log(result);
-          
-    }
-    /*Otra  Manera  de  Resolver  la  6
-    
-    
-       /*6. Escriba una función ('printGoals') que reciba un número arbitrario de nombres de jugadores (no un array) 
-    e imprime cada uno de ellos en la consola, junto con el número de goles que se marcaron en total (número de nombres de jugadores transferidos).*/
-    
-    /*let v =(printGoals(allPlayers));
-    
-    function printGoals(...ns:any) {
-        let goles:any=game.scored;
-        let nh=ns;
-        let arr:String[] = [...ns[0]];  
-        for(let i = 0; i < arr.length; i++) {
-             let cont = 0;
-            for(let j = 0; j < goles.length; j++){
-                if(goles[j] === arr[i]) {
-                    cont ++;
-                }
-            }
-            console.log(arr[i] + " " + cont);
-            
-        }
-    }*/
-    
-    
-    /*7. Es más probable que gane el equipo con la cuota más baja. Imprima en la consola que equipo es más 
-    probable que gane, sin usar una declaración if/else o el operador ternario.*/
-    
-    let final = [
-        {
-            nombre_del_equipo1: game.team1, cuota: game.odds.team1
-            
-        },
-        {
-            nombre_del_equipo2: game.team2, cuota: game.odds.team2
-            
-        }
-    ]
-    let cuotamas_baja: number = Math.min(final[0].cuota, final[1].cuota);
-    let equipo_ganador  = final.filter(final => final.cuota == cuotamas_baja);
-    console.log(equipo_ganador);
+/*PREGUNTA 2:
+Se desea construir una calculadora de propinas muy simple para cada vez que vaya a comer en un
+restaurante. Supongamos que, en su país, es habitual dar una propina del 15% si el valor de la factura está
+entre 50 y 300. Si el valor es diferente, la propina es del 20%.
+Sus tareas:*/
+
+
+/*1. Calcule la propina, dependiendo del valor de la factura. Cree una variable llamada ‘tip' para esto. No
+está permitido usar una declaración if / else*/
+
+var fac=111;
+
+var tip =fac<=300?(fac*0.15):fac>=50?(fac*0.15):(fac*0.20);
+console.log("la propina  sin utilizar  if else de"+fac +" es "+tip);//imprimir  la propina de  un valor  de factura  
+
+/*2. Imprima una cadena en la consola que contenga el valor de la factura, la propina y el valor final.
+(factura + propina). Ejemplo: "La factura fue 275, la propina fue 41,25 y el valor total 316.25 "*/
+
+let cadena:string = `La factura fue ${fac}, la propina  fue ${tip} y el valor total ${fac+tip} `;
+console.log(cadena)
+
+/*3. Escriba una función 'calcTip' que tome cualquier valor de factura como entrada y devuelva la propina
+correspondiente, calculada según las reglas anteriores. Pruebe la función con un valor de factura de
+100*/
+
+function calTip(factura:number):number {
+  var propina:number;
+  if (factura>=50&&factura<=300)
+  {
+    propina=factura*0.15;
+  }
+  else{
+    propina=factura*0.20;
+  } 
+
+  return propina;
+}
+console.log("la propina  utilizando la  funcion de 100 es "+calTip(100)) //provando la funcion 
+
+/*4. Cree un array de 'facturas' que contenga los siguientes datos de prueba: 22, 295, 176, 440, 37, 105,
+10, 1100, 86, 52 */
+
+
+let facturas: number[] = [22,295,176,440,37,105,10,1100,86,52];
+
+
+/* 5. Cree arrays vacíos para las propinas y los totales ('propinas' y 'totales')*/
+let propinas: number[]=[];
+let totales: number[]=[];
+
+/*6. Utilice la función 'calcTip' que escribimos antes para calcular propinas y valores totales (factura +
+propina) para cada valor de factura en la matriz de facturas. */
+
+for(let i=0; i<facturas.length; i++){
+    propinas[i]=calTip(facturas[i]);
+    totales[i]=(calTip(facturas[i]))+facturas[i];
+}
+console.log("array de facturas  :"+facturas);//imprimir  el array de  facturas
+console.log("array de propinas: "+propinas);//imprimir  el array de propinas 
+console.log("array de totales: "+totales);//imprimir  el array de totales 
